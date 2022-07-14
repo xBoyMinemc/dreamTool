@@ -1,7 +1,7 @@
 
 # x y 平面直角坐标转孔乙己坐标
-								y		
 ![image](https://user-images.githubusercontent.com/86919167/178985418-7183b94c-e733-4254-8cf1-1fbf99fe8e28.png)
+								y		
 											
 	x	-3	-2	-1	0	1	2	3			
 		48	47	#	45	44	43	42	3		
