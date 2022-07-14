@@ -23,4 +23,4 @@ const pos2index = (xy : Array<number>) : number=>{
 
 }
 export default pos2index;
-console.log(pos2index([0,0]))
+console.log(pos2index([-1,3]))
