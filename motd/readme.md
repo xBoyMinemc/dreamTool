@@ -28,3 +28,4 @@ const motdpe = Getmotdpe("127.0.0.1",19132)
 import  "fakeMotdpe.js";
 
 将会在计算机指定端口模拟一个能发送motdpe的基岩服
+ 
