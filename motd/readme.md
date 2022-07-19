@@ -21,3 +21,10 @@ const motdpe = Getmotdpe("127.0.0.1",19132)
     "6661",//ipv6 port  
     "" //占位，留空  
 ]  
+#
+伪造一个务器发送motdpe
+#
+
+import  "fakeMotdpe.js";
+
+将会在计算机指定端口模拟一个能发送motdpe的基岩服
