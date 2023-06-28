@@ -22,7 +22,7 @@ const motdpe = Getmotdpe("127.0.0.1",19132)
     "" //占位，留空  
 ]  
 #
-伪造一个务器发送motdpe
+伪造一个服务器发送motdpe
 #
 
 import  "fakeMotdpe.js";
