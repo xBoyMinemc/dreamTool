@@ -11,13 +11,7 @@
 #define SERVER_PORT 19132
 #define BUF_SIZE 1024
 
-#define DEBUG FALSE
-// void utf8_to_hex(const char *utf8, char *hex) {
-//     int len = strlen(utf8);
-//     for (int i = 0; i < len; i++) {
-//         sprintf(hex + (i * 2), "%02X", (unsigned char)utf8[i]);
-//     }
-// }
+#define DEBUG FALSE 
 // 将十六进制字符串转换为UTF-8字符串
 char* hexToUtf8(const char* hexString,int hexLength) {
     // printf("hexLength=> %d\n",hexLength);
@@ -40,33 +34,13 @@ char* hexToUtf8(const char* hexString,int hexLength) {
     utf8String[j] = '\0';
     return utf8String;
 }
-
-// char* hexToString(const unsigned char* buffer, size_t length) {
-//     char* hexString = (char*)malloc(length * 2 + 1);
-//     if (hexString == NULL) {
-//         return NULL;
-//     }
-
-//     for (size_t i = 0; i < length; i++) {
-//         sprintf(&hexString[i * 2], "%02X", buffer[i]);
-//     }
-
-//     return hexString;
-// }
+ 
     void hexBufferToString(const unsigned char* buffer, size_t length, char* str_buffer) {
     for (size_t i = 0; i < length; i++) {
         sprintf(&str_buffer[i*2], "%02X", buffer[i]);
     }
-}
-// void hexToUtf8(const unsigned char* hex, size_t hexLen, unsigned char** utf8, size_t* utf8Len) {
-//     *utf8Len = hexLen / 2; // 每两个十六进制字符对应一个UTF-8字符
-//     *utf8 = (unsigned char*)malloc((*utf8Len) + 1); // 分配足够的内存来存储UTF-8字符串
-//     (*utf8)[*utf8Len] = '\0'; // 在字符串末尾添加空字符
+} 
 
-//     for (size_t i = 0; i < *utf8Len; i++) {
-//         sscanf((char*)&hex[i * 2], "%2hhx", &(*utf8)[i]); // 将每两个十六进制字符解析为一个字节
-//     }
-// }
 int main()
 {
     WSADATA wsaData;
@@ -139,27 +113,7 @@ int main()
     printf("UDP packet received from %s:%d\n", inet_ntoa(clientAddr.sin_addr), ntohs(clientAddr.sin_port));
     recvLen -= 35;
     memmove(recvBuf,recvBuf+35,recvLen);
-
-    // printf("\nffff\n");
-    // for (int i = 0; i < recvLen; ++i) {
-    //     printf("%02X ", (unsigned char)recvBuf[i]);
-    // }
  
-    // printf("\n");
-    // printf("recvBuf=> %d\n",strlen(recvBuf));
-    // printf("recvLen=> %d\n",recvLen);
-
-    // char* newchar = hexToUtf8(recvBuf,recvLen);
-    //    size_t length = sizeof(recvBuf) / sizeof(recvBuf[0]);
-       
-    // unsigned char* utf8;
-    // size_t utf8Len;
-    // size_t buffLen = sizeof(recvBuf);
-    // // hexToUtf8(recvBuf, recvLen, &utf8, &utf8Len);
-
-    // printf("UTF-8字符串数组: %s\n", utf8);
-    // printf("UTF-8字符串长度: %d\n", recvLen);
-
 
     char str_buffer[recvLen * 2 + 1]; // 预留一个额外的字符用于存储字符串结束符'\0'
     hexBufferToString(recvBuf, recvLen, str_buffer);
