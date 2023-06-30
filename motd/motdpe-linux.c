@@ -121,18 +121,13 @@ int main(int argc, char *argv[]) {
     // for (int i = 0; i < argc; i++) {
     //     printf("参数 %d: %s\n", i, argv[i]);
     // }
-    // char *hostport= "is-rbq.cn:19132" ;
-
-    // char host[] = "Hello, world!";
     char* SERVER_HOST;
-
     char* SERVER_IP;
     unsigned short SERVER_PORT;
     if(argc<=1){
-        SERVER_IP = "173.208.172.170";
+        SERVER_HOST = "173.208.172.170";
         SERVER_PORT = 19132;
     }else if(argc==2){
-        // char strs[] = "192.168.0.1:8080";
         char* host;
         char* port;
 
@@ -141,8 +136,6 @@ int main(int argc, char *argv[]) {
         if(!port){
             port = "19132";
         }
-            // printf("IP: %s\n", ip);
-            // printf("Port: %s\n", port);
         if (host != NULL && port != NULL) {
             
             SERVER_HOST = host;
@@ -186,9 +179,10 @@ int main(int argc, char *argv[]) {
     //记录原始host
     // strncpy(SERVER_HOST, host, sizeof(host)-1);
     // SERVER_HOST[sizeof(SERVER_HOST)-1] = '\0';
+            // printf("IPv4 SERVER_IP 地址：%s\n", SERVER_IP);
+
 
     if(!isIPAddress(SERVER_HOST)){
-        
     int count;
         char** results = resolveDomainName(SERVER_HOST, &count);
 
@@ -205,6 +199,8 @@ int main(int argc, char *argv[]) {
 
             free(results);
         }
+    }else{
+        SERVER_IP = SERVER_HOST;
     }
 
 
@@ -220,6 +216,9 @@ int main(int argc, char *argv[]) {
         // perror("socket creation failed");
         return 1;
     }
+            // printf("IPv4 SERVER_HOST 地址：%s\n", SERVER_HOST);
+            // printf("IPv4 SERVER_IP 地址：%s\n", SERVER_IP);
+            // printf("IPv4 SERVER_PORT 地址：%d\n", SERVER_PORT);
 
     // 配置服务器地址信息
     serverAddr.sin_family = AF_INET;
