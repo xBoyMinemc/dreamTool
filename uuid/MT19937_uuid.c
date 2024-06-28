@@ -47,16 +47,23 @@ unsigned int generateRandomNumber(MT19937* mt) {
 
 void generateUUID(char* uuid, MT19937* mt) {
     const char* characters = "0123456789abcdef";
-    for (int i = 0; i < 32; i++) {
-        if (i == 8 || i == 12 || i == 16 || i == 20) {
+
+ 
+
+    for (int i = 0; i < 34; i++) {
+        if (i == 8 || i == 13 || i == 18 || i == 23) {
             uuid[i] = '-';
+        }else if (i == 14) {
+            uuid[i] = '4';
+        }else if (i == 19) {
+            uuid[i] = 'a';
         }
         else {
             unsigned int rnd = generateRandomNumber(mt) % 16;
             uuid[i] = characters[rnd];
         }
     }
-    uuid[32] = '\0';
+    uuid[34] = '\0';
 }
 int main(int argc, char* argv[]) {
     int number = 1;
@@ -67,7 +74,7 @@ int main(int argc, char* argv[]) {
         unsigned int seed = getCurrentTime();
         initMT(&mt, seed);
 
-        char uuid[37];
+        char uuid[34];
         generateUUID(uuid, &mt);
         printf("%s\n", uuid);
     }
