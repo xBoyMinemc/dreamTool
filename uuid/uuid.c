@@ -21,9 +21,13 @@ void generateUUID(char* uuid, int number) {
     // 又不是不能用！
 
     // 生成32位随机数
-    for (i = 0; i < 32; i++) {
-        if (i == 8 || i == 12 || i == 16 || i == 20) {
+    for (i = 0; i < 34; i++) {
+        if (i == 8 || i == 13 || i == 18 || i == 23) {
             uuid[i] = '-';
+        }else if (i == 14) {
+            uuid[i] = '1';
+        }else if (i == 19) {
+            uuid[i] = '8';
         }
         else {
             rnd = rand() % 16;
@@ -31,7 +35,7 @@ void generateUUID(char* uuid, int number) {
         }
     }
 
-    uuid[32] = '\0';
+    uuid[34] = '\0';
 }
 
 int main(int argc, char* argv[]) {
@@ -40,7 +44,7 @@ int main(int argc, char* argv[]) {
         number = atoi(argv[1]);
     while (number--)
     {
-        char uuid[32];
+        char uuid[34];
 
         generateUUID(uuid,number);
         printf("%s\n", uuid);
