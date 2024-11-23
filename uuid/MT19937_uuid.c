@@ -50,7 +50,7 @@ void generateUUID(char* uuid, MT19937* mt) {
 
  
 
-    for (int i = 0; i < 34; i++) {
+    for (int i = 0; i < 36; i++) {
         if (i == 8 || i == 13 || i == 18 || i == 23) {
             uuid[i] = '-';
         }else if (i == 14) {
@@ -63,7 +63,7 @@ void generateUUID(char* uuid, MT19937* mt) {
             uuid[i] = characters[rnd];
         }
     }
-    uuid[34] = '\0';
+    uuid[36] = '\0';
 }
 int main(int argc, char* argv[]) {
     int number = 1;
@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
         unsigned int seed = getCurrentTime();
         initMT(&mt, seed);
 
-        char uuid[34];
+        char uuid[36];
         generateUUID(uuid, &mt);
         printf("%s\n", uuid);
     }
